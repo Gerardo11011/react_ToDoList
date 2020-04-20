@@ -3,7 +3,7 @@ import ToDo from './ToDo'
 
 
 
-function ToDoList({ todos, toggledToDo }) {
+function ToDoList({ todos, toggledToDo, deleteTodo }) {
 
     const orderList = (lista) => {
         const newTodos = [...lista]
@@ -13,9 +13,10 @@ function ToDoList({ todos, toggledToDo }) {
 
     const lista = orderList(todos)
     return (
-        
         lista.map(todo => {
-            return <ToDo key={ todo.id } todo={ todo } toggledToDo={ toggledToDo }></ToDo>
+            return(
+                <ToDo key={ todo.id } todo={ todo } toggledToDo={ toggledToDo } deleteTodo={ deleteTodo }></ToDo>
+            )
         })
     )
 }

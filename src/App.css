@@ -21,6 +21,9 @@
   color: black;
   font-size: 18px;
 }
+body {
+  background-color: #f9f9fa
+}
 
 .flex {
   -webkit-box-flex: 1;
@@ -48,7 +51,7 @@
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  -ms-box-shadow: none;
+  -ms-box-shadow: none
 }
 
 .pl-3,
@@ -70,7 +73,7 @@
 
 .pr-3,
 .px-3 {
-  padding-right: 1rem !important;
+  padding-right: 1rem !important
 }
 
 .card .card-body {
@@ -86,7 +89,7 @@
   color: #000000;
   margin-bottom: 0.625rem;
   text-transform: capitalize;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   font-weight: 500
 }
 
@@ -228,7 +231,7 @@
 
 .list-wrapper .completed {
   text-decoration: line-through;
-  text-decoration-color: #3da5f4
+  text-decoration-color: #405189
 }
 
 .list-wrapper ul li .form-check {

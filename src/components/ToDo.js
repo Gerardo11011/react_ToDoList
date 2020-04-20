@@ -1,22 +1,30 @@
 import React from 'react'
 
-function ToDo({ todo, toggledToDo }) {
+function ToDo({ todo, toggledToDo, deleteTodo }) {
 
     function handleToDoClick() {
         toggledToDo(todo.id)
     }
+    function handleToDelete(){
+        deleteTodo(todo.id)
+    }
 
 
     return (
-        <li>
-            <div className={todo.complete ? "done" : "undone"}>
-                <input className="checkbox" checked={todo.complete} onChange={handleToDoClick} type="checkbox" name="cheked" id="checked"/>
-                {todo.name}
+        <li className={todo.complete ? "completed" : ""}>
+            <div className="form-check">
+                <label className="form-check-label">
+                    {todo.name}
+                    <input className="checkbox" type="checkbox" checked={todo.complete} onChange={handleToDoClick} />
+                    <i className="input-helper"></i>
+                </label>
             </div>
-            {/* <input type="checkbox" checked={todo.complete} onChange={handleToDoClick}></input>
-                {todo.name} */}
+            <i class="remove mdi mdi-close-circle-outline" onClick={handleToDelete}></i>           
         </li>
     )
 }
 
 export default ToDo
+
+ {/* <input type="checkbox" checked={todo.complete} onChange={handleToDoClick}></input>
+                {todo.name} */}

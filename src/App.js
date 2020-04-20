@@ -11,7 +11,7 @@ const LOCAL_STORAGE_KEY = 'todoApp'
 
 function App() {
 
-  document.body.style = "background-color: #33A1C9"
+  document.body.style = "background-color: #405189"
 
   const [todos, setTodos] = useState([])
   const todoNameRef = useRef()
@@ -57,6 +57,12 @@ function App() {
     setTodos(completes)
   }
 
+  const deleteTodo = (id) => {
+    const newTodos = [...todos]
+    const completes = newTodos.filter(todo => todo.id != id)
+    setTodos(completes)
+  }
+
   const tama = todos.length
 
   if(Array.isArray(todos) && tama){
@@ -75,11 +81,13 @@ function App() {
                       <Button className="add btn btn-danger font-weight-bold todo-list-add-btn" onClick={handleClearTodos}>Clear</Button>
                     </form>
                     <div className="list-wrapper">
+                      <h5>Todo</h5>
                       <ul className="d-flex flex-column-reverse todo-list">
-                        <ToDoList todos={ todos.filter(todo => !todo.complete) } toggledToDo={     toggledToDo }></ToDoList>
+                        <ToDoList todos={ todos.filter(todo => !todo.complete) } toggledToDo={     toggledToDo } deleteTodo={ deleteTodo }></ToDoList>
                       </ul>
+                      <h5>Done</h5>
                       <ul className="d-flex flex-column-reverse todo-list">
-                        <ToDoList todos={ todos.filter(todo => todo.complete) } toggledToDo={     toggledToDo }></ToDoList>
+                        <ToDoList todos={ todos.filter(todo => todo.complete) } toggledToDo={     toggledToDo } deleteTodo={ deleteTodo }></ToDoList>
                       </ul>
                     </div>
                   </div>
