@@ -27,13 +27,7 @@ function App() {
 
   const [todos, setTodos] = useState([])
   const todoNameRef = useRef()
-
-  useEffect(() => {
-    if(Array.isArray(todos) && todos.length){
-      orderList()
-    }
-  }, [])
-
+  
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     if (storedTodos) setTodos(storedTodos)
@@ -75,26 +69,18 @@ function App() {
     setTodos(completes)
   }
 
-  const orderList = () => {
-    const newTodos = [...todos]
-    var completes = newTodos.sort((a, b) => a.name.localeCompare(b.name))
-    console.log(completes);
-    setTodos(completes)
-  }
-
   const tama = todos.length
 
   if(Array.isArray(todos) && tama){
     return(
       <div className="App">
-        <ToDoList todos={ todos.filter(todo => !todo.complete) } toggledToDo={ toggledToDo } order={ orderList }></ToDoList>
-        <ToDoList todos={ todos.filter(todo => todo.complete) } toggledToDo={ toggledToDo } order={ orderList }></ToDoList>
+        <ToDoList todos={ todos.filter(todo => !todo.complete) } toggledToDo={ toggledToDo }></ToDoList>
+        <ToDoList todos={ todos.filter(todo => todo.complete) } toggledToDo={ toggledToDo }></ToDoList>
         <form onSubmit={handleTodo}>
           <input type="text" ref={ todoNameRef }></input>
         </form>
         <button onClick={handleTodo}>Add ToDo</button>
         <button onClick={handleClearTodos}>Clear Complete ToDo</button>
-        <button onClick={orderList}>Order</button>
         <div>{todos.filter(todo => !todo.complete).length} left to do</div>
       </div>
     )

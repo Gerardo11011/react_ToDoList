@@ -8,7 +8,7 @@ function ToDo({ todo, toggledToDo }) {
 
 
     return (
-        <div>
+        <div className={todo.complete ? "completado" : "incompleto"}>
             <label>
                 <input type="checkbox" checked={todo.complete} onChange={handleToDoClick}></input>
                 {todo.name}
