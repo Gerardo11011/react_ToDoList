@@ -4,12 +4,12 @@ function Form(){
     const [newTodo, setNewTodo] = useState("")
     const[todos, setTodos] = useState([])
   
-    function handleNewTodoChange(e){
+    const handleNewTodoChange = (e) => {
       e.preventDefault()
       setNewTodo(e.target.value)
     }
   
-    function handleNewTodo(e){
+    const handleNewTodo = (e) => {
       e.preventDefault()
       if (newTodo === '') return
       setTodos([...todos, {id: Date.now(), text: newTodo}])
@@ -18,7 +18,7 @@ function Form(){
     }
   
     return(
-      <div className = "demoComponent">
+      <div className = "App">
         <h1>TODO</h1>
         <form onSubmit={handleNewTodo}>
           <input placeholder="Your todo..." onChange={handleNewTodoChange} />
