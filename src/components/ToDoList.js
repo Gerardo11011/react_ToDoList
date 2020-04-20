@@ -7,7 +7,7 @@ function ToDoList({ todos, toggledToDo }) {
 
     const orderList = (lista) => {
         const newTodos = [...lista]
-        var completes = newTodos.sort((a, b) => a.name.localeCompare(b.name))
+        var completes = newTodos.sort((a, b) => b.name.localeCompare(a.name))
         return completes
       }
 
