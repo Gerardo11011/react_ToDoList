@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import { v4 as uuidv4 } from "uuid";
 import ToDoList from "./components/ToDoList";
 import Radio from "./components/Radio";
+import ToDoMessages from "./components/ToDoMesages";
+import ToDo from "./components/ToDo";
 
 const LOCAL_STORAGE_KEY = "todoApp";
 
@@ -14,13 +16,14 @@ function App() {
   const [todos, setTodos] = useState([]);
   const todoNameRef = useRef();
   const pending = todos.filter((todo) => !todo.complete);
+  const completes = todos.filter((todo) => todo.complete);
 
   useEffect(() => {
     console.log("render");
     if (pending.length) {
       document.title = `ToDo List ${pending.length} Task Pending `;
     } else {
-      document.title = `Todo List`;
+      document.title = `ToDo List`;
     }
   }, [pending.length]);
 
@@ -85,14 +88,6 @@ function App() {
     setTodos(completes);
   };
 
-  const todoPending = (
-    <ul className="d-flex flex-column-reverse todo-list">
-      <ToDoList todos={pending} toggledToDo={toggledToDo} deleteTodo={deleteTodo}></ToDoList>
-    </ul>
-  );
-
-  const todoPendingComplete = <p id="foo"> Great, you have completed all your tasks </p>;
-
   const tama = todos.length;
   if (Array.isArray(todos) && tama) {
     return (
@@ -103,7 +98,7 @@ function App() {
               <div className="col-lg-12">
                 <div className="card px-3" id="cardColor">
                   <div className="card-body">
-                    <h4 className="card-title"> Awesome Todo list </h4>
+                    <h4 className="card-title"> Todo list </h4>
                     {/* <Radio></Radio> */}
                     <form className="add-items d-flex" onSubmit={handleTodo}>
                       <input ref={todoNameRef} type="text" className="form-control todo-list-input" placeholder="What do you need to do today?" />
@@ -115,12 +110,10 @@ function App() {
                       </Button>
                     </form>
                     <div className="list-wrapper">
-                      <h5> Todo </h5>
-                      {pending.length ? todoPending : todoPendingComplete}
-                      <h5> Done </h5>
-                      <ul className="d-flex flex-column-reverse todo-list">
-                        <ToDoList todos={todos.filter((todo) => todo.complete)} toggledToDo={toggledToDo} deleteTodo={deleteTodo}></ToDoList>
-                      </ul>
+                      <h6> Todo </h6>
+                      <ToDoMessages list={pending} toggledToDo={toggledToDo} deleteTodo={deleteTodo} message={true}></ToDoMessages>
+                      <h6> Done </h6>
+                      <ToDoMessages list={completes} toggledToDo={toggledToDo} deleteTodo={deleteTodo} message={false}></ToDoMessages>
                     </div>
                   </div>
                 </div>
@@ -139,15 +132,15 @@ function App() {
               <div className="col-lg-12">
                 <div className="card px-3">
                   <div className="card-body">
-                    <h4 className="card-title"> Awesome Todo list </h4>
+                    <h4 className="card-title"> Todo list </h4>
                     <form className="add-items d-flex" onSubmit={handleTodo}>
                       <input ref={todoNameRef} type="text" className="form-control todo-list-input" placeholder="What do you need to do today?" />
                       <Button className="add btn btn-success font-weight-bold todo-list-add-btn" onClick={handleTodo}>
-                        Add{" "}
+                        Add
                       </Button>
                     </form>
                     <div className="list-wrapper" placeholder="No elements in the list">
-                      <p id="foo"> Great, you have no pending task </p>
+                      <p id="foo"> Great!, you have no pending tasks </p>
                     </div>
                   </div>
                 </div>
