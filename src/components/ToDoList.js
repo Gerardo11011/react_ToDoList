@@ -1,17 +1,15 @@
 import React from 'react'
 import ToDo from './ToDo'
 
-
-
 function ToDoList({ todos, toggledToDo, deleteTodo }) {
 
-    const orderList = (lista) => {
-        const newTodos = [...lista]
+    const orderList = () => {
+        const newTodos = [...todos]
         var completes = newTodos.sort((a, b) => b.name.localeCompare(a.name))
         return completes
       }
 
-    const lista = orderList(todos)
+    const lista = orderList()
     return (
         lista.map(todo => {
             return(

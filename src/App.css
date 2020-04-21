@@ -1,26 +1,28 @@
 #foo {
-  color: #000; /* Fallback for older browsers */
+  color: #000;
+  /* Fallback for older browsers */
   color: rgba(0, 0, 0, 0.5);
 
   font-size: 12pt;
   font-family: Arial, sans-serif;
 }
 
-#cardColor{
+#cardColor {
   background-color: #f9f9fa;
 }
 
-.done{
+.done {
   text-decoration: line-through;
   text-decoration-color: rgba(36, 34, 34, 0.75);
   color: rgba(36, 34, 34, 0.5);
   font-size: 18px;
 }
 
-.undone{
+.undone {
   color: black;
   font-size: 18px;
 }
+
 body {
   background-color: #f9f9fa
 }
@@ -33,13 +35,13 @@ body {
 
 @media (max-width:991.98px) {
   .padding {
-      padding: 1.5rem
+    padding: 1.5rem
   }
 }
 
 @media (max-width:767.98px) {
   .padding {
-      padding: 1rem
+    padding: 1rem
   }
 }
 
