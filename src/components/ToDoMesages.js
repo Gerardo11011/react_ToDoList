@@ -9,7 +9,7 @@ function ToDoMesages({ list, toggledToDo, deleteTodo, message }) {
   );
 
   const todoMessagePending = <p id="foo"> Great!, you have completed all your tasks </p>;
-  const todoMessageDone = <p id="foo"> It seems we have some homework today </p>;
+  const todoMessageDone = <p id="foo"> It seems we have some work today </p>;
   var messageSent;
   if (message) {
     messageSent = todoMessagePending;
