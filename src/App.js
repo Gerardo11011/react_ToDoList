@@ -3,10 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { v4 as uuidv4 } from "uuid";
-import ToDoList from "./components/ToDoList";
-import Radio from "./components/Radio";
 import ToDoMessages from "./components/ToDoMesages";
-import ToDo from "./components/ToDo";
 
 const LOCAL_STORAGE_KEY = "todoApp";
 
