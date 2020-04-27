@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toggledToDoContext, deleteTodoContext } from "../App";
+function ToDo({ todo }) {
+  const toggledToDo = useContext(toggledToDoContext);
+  const deleteTodo = useContext(deleteTodoContext);
 
-function ToDo({ todo, toggledToDo, deleteTodo }) {
   function handleToDoClick() {
     toggledToDo(todo.id);
   }

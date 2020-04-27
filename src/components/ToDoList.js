@@ -1,7 +1,7 @@
 import React from "react";
 import ToDo from "./ToDo";
 
-function ToDoList({ todos, toggledToDo, deleteTodo }) {
+function ToDoList({ todos }) {
   const orderList = () => {
     const newTodos = [...todos];
     var completes = newTodos.sort((a, b) => b.name.localeCompare(a.name));
@@ -10,7 +10,7 @@ function ToDoList({ todos, toggledToDo, deleteTodo }) {
 
   const lista = orderList();
   return lista.map((todo) => {
-    return <ToDo key={todo.id} todo={todo} toggledToDo={toggledToDo} deleteTodo={deleteTodo}></ToDo>;
+    return <ToDo key={todo.id} todo={todo}></ToDo>;
   });
 }
 

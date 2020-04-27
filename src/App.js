@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, createContext } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import ToDoMessages from "./components/ToDoMesages";
 
 const LOCAL_STORAGE_KEY = "todoApp";
+
+export const toggledToDoContext = React.createContext();
+export const deleteTodoContext = React.createContext();
 
 function App() {
   document.body.style = "background-color: #405189";
@@ -107,10 +110,14 @@ function App() {
                       </Button>
                     </form>
                     <div className="list-wrapper">
-                      <h6> Todo </h6>
-                      <ToDoMessages list={pending} toggledToDo={toggledToDo} deleteTodo={deleteTodo} message={true}></ToDoMessages>
-                      <h6> Done </h6>
-                      <ToDoMessages list={completes} toggledToDo={toggledToDo} deleteTodo={deleteTodo} message={false}></ToDoMessages>
+                      <toggledToDoContext.Provider value={toggledToDo}>
+                        <deleteTodoContext.Provider value={deleteTodo}>
+                          <h6> Todo </h6>
+                          <ToDoMessages list={pending} message={true}></ToDoMessages>
+                          <h6> Done </h6>
+                          <ToDoMessages list={completes} message={false}></ToDoMessages>
+                        </deleteTodoContext.Provider>
+                      </toggledToDoContext.Provider>
                     </div>
                   </div>
                 </div>
