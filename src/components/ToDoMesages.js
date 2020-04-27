@@ -1,10 +1,10 @@
 import React from "react";
 import ToDoList from "./ToDoList";
 
-function ToDoMesages({ list, toggledToDo, deleteTodo, message }) {
+function ToDoMesages({ list, message }) {
   const todoList = (
     <ul className="d-flex flex-column-reverse todo-list">
-      <ToDoList todos={list} toggledToDo={toggledToDo} deleteTodo={deleteTodo}></ToDoList>
+      <ToDoList todos={list}></ToDoList>
     </ul>
   );
 
